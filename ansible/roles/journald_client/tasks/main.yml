@@ -1,0 +1,23 @@
+---
+- name: install systemd-journal-gateway
+  dnf:
+    name: systemd-journal-gateway
+    state: present
+    
+- name: template journal-upload.conf
+  template:
+    src: templates/journal-upload.conf
+    dest: /etc/systemd/journal-upload.conf 
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: start journal-upload.servise
+  systemd:
+    name: systemd-journal-upload.service
+    enabled: yes
+    state: started
+    daemon_reload: yes
+
+
+

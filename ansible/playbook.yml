@@ -1,12 +1,13 @@
 ---
-- name: config web-server
-  hosts: web
-  become: true
-  roles:
-    - nginx
-
-- name: config log server
+- name: config log-server
   hosts: log
   become: true
+  roles:
+    - journald_server
+
+- name: web server
+  hosts: web
+  become: true
   roles: 
-    - rsyslog  
+    - nginx
+    - journald_client  
