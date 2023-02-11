@@ -1,0 +1,19 @@
+---
+- name: install nginx
+  dnf:
+    name: nginx
+    state: latest
+
+- name: template nginx config
+  template:
+    src: templates/nginx.conf
+    dest: /etc/nginx/nginx.conf
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: start nginx
+  systemd:
+    name: nginx
+    enabled: yes
+    state: started  

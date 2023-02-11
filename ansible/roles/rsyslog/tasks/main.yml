@@ -1,0 +1,14 @@
+---
+
+- name: template rsyslog conf
+  template:
+    src: templates/rsyslog.conf
+    dest: /etc/rsyslog.conf
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: restart rsyslog
+  systemd:
+    name: rsyslog.service
+    state: restarted  
