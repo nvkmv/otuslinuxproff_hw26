@@ -1,0 +1,40 @@
+---
+- name: install systemd-journal-gateway
+  dnf:
+    name: systemd-journal-gateway
+    state: present
+     
+- name: create dir for remote logs
+  file:
+    path: /var/log/journal/remote
+    state: directory
+    recurse: yes 
+    owner: systemd-journal-remote
+    group: systemd-journal-remote
+
+- name: template journal-remode unit
+  template:
+    src: templates/systemd-journal-remote.service
+    dest: /lib/systemd/system/systemd-journal-remote.service 
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: template journal-remote unit socket
+  template:
+    src: templates/systemd-journal-remote.service
+    dest: /lib/systemd/system/systemd-journal-remote.service
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: start systemd-journal-remote.service
+  systemd:
+    name: systemd-journal-remote.service
+    enabled: yes
+    state: started 
+    daemon_reload: yes 
+  
+      
+     
+       
