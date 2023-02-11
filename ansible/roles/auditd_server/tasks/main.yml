@@ -1,0 +1,15 @@
+---
+
+- name: config auditd server
+  template:
+    src: templates/auditd.conf
+    dest: /etc/audit/auditd.conf
+    owner: root
+    group: root
+    mode: "0640"
+
+- name: restart auditd service
+  systemd:
+    name: auditd
+    state: started
+    daemon_reload: yes  

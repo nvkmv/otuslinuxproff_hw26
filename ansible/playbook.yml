@@ -4,10 +4,12 @@
   become: true
   roles:
     - journald_server
+    - auditd_server
 
 - name: web server
   hosts: web
   become: true
   roles: 
     - nginx
-    - journald_client  
+    - journald_client
+    - auditd_client  
