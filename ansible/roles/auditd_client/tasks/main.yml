@@ -1,0 +1,38 @@
+---
+
+- name: add rule to auditd
+  template:
+    src: templates/audit.rules
+    dest: /etc/audit/rules.d/audit.rules
+    owner: root
+    group: root
+    mode: "0600"
+
+- name: install audispd-plugins
+  dnf:
+    name: audispd-plugins
+    state: latest
+
+- name: template audispd-plugins config
+  template:
+    src: templates/audisp-remote.conf
+    dest: /etc/audit/audisp-remote.conf
+    owner: root
+    group: root
+    mode: "0640"
+
+- name: template au-remote config
+  template:
+    src: templates/au-remote.conf
+    dest: /etc/audit/plugins.d/au-remote.conf
+    owner: root
+    group: root
+    mode: "0640"
+
+ 
+- name: restart auditd
+  systemd:
+    name: auditd
+    state: started
+
+   
