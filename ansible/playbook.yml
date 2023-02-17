@@ -13,3 +13,4 @@
     - nginx
     - journald_client
     - auditd_client  
+    - filebeat

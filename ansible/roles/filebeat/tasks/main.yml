@@ -1,0 +1,16 @@
+---
+
+- name: template repo file elastic
+  template:
+    src: templates/elastic.repo
+    dest: /etc/yum.repos.d/elastic.repo
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: install filebeat 
+  dnf:
+    name: filebeat
+    state: present
+    disable_gpg_check: yes
+
