@@ -17,13 +17,13 @@ Vagrant.configure("2") do |config|
 
   config.vm.define "log" do |log|
     log.vm.hostname = "log"
-    log.vm.network "public_network", ip: "192.168.1.67", bridge: "enp2s0f0"
-    log.vm.synced_folder "./data", "/home/vagrant/data" 
+    log.vm.network "public_network", ip: "192.168.1.67"
+    #log.vm.synced_folder "./data", "/home/vagrant/data" 
   end
 
   config.vm.define "web" do |web|
     web.vm.hostname = "web"
-    web.vm.network "public_network", ip: "192.168.1.66", bridge: "enp2s0f0"
-    web.vm.synced_folder "./data", "/home/vagrant/data" 
+    web.vm.network "public_network", ip: "192.168.1.66"
+    #web.vm.synced_folder "./data", "/home/vagrant/data" 
   end
 end
