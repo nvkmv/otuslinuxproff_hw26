@@ -1,11 +1,11 @@
 # otuslinuxproff_hw26
 
 ### Vagrant с двумя виртуальными машинами:
-  - WEB: с сервером Nginx, настроенным filebeat на слежение за его логами, auditd следящий за конфиг-файлом nginx и отправка системных логов через journal-upload  
+  - WEB: с сервером Nginx, настроенным filebeat на слежение за его логами, auditd следящий за конфиг-файлом nginx (просмотр командой ``` sudo auditctl -l)и отправка системных логов через journal-upload  
   
   - LOG: настроен на прием системных journald логов - просмотр командой ``` sudo journalctl -D /var/log/journal/remote ```
          и логов auditd от WEB - просмотр командой: ``` sudo grep web /var/log/audit/audit.log ```
-или ``` sudo ausearch -hn web ```        
+или ``` sudo ausearch -hn web -l ```        
   
 ### docker-compose файл для запуска ELK-stack (без Logstash )
   -  для представления логов Nginx в графическом виде на локальной машине
