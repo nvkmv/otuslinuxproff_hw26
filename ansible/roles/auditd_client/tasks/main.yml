@@ -31,8 +31,7 @@
 
  
 - name: restart auditd
-  systemd:
-    name: auditd
-    state: started
+  command: service auditd restart
+
 
    

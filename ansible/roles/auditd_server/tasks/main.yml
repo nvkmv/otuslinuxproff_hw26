@@ -9,7 +9,4 @@
     mode: "0640"
 
 - name: restart auditd service
-  systemd:
-    name: auditd
-    state: started
-    daemon_reload: yes  
+  command: service auditd restart
