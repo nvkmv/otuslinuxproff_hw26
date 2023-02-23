@@ -4,7 +4,7 @@
   - WEB: с сервером Nginx, настроенным filebeat на слежение за его логами, auditd следящий за конфиг-файлом nginx и отправка системных логов через journal-upload  
   
   - LOG: настроен на прием системных journald логов - просмотр командой ``` sudo journalctl -D /var/log/journal/remote ```
-         и логов auditd от WEB - просмотр командой: ``` sudo ausearch --node web -k hosts_file_change ```
+         и логов auditd от WEB - просмотр командой: ``` sudo grep web /var/log/audit/audit.log ```
         
   
 ### docker-compose файл для запуска ELK-stack (без Logstash )
